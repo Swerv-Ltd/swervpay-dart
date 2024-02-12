@@ -1,0 +1,23 @@
+name: swervpay_dart
+description: Dart Client for Swervpay
+version: 0.0.1
+homepage: https://docs.swervpay.co/sdks/dart
+repository: https://github.com/swerv-ltd/swervpay-dart
+issue_tracker: https://github.com/swerv-ltd/swervpay-dart/issues
+documentation: https://docs.swervpay.co/sdks/dart
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+
+environment:
+  sdk: ">=3.2.3 <4.0.0"
+
+dependencies:
+  http: ^1.2.0
+
+dev_dependencies:
+  test: ^1.25.2
