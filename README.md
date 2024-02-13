@@ -43,7 +43,7 @@ Create a new instance of Swervpay with your secret_key and business_id:
 ```dart
 import "package:swervpay_dart/swervpay_dart.dart";
 
-final Swervpay swerpvay = Swervpay()
+final SwervpayClient swerpvay = SwervpayClient(config: SwervpayClientConfig(businessId: '<BUSINESS_ID>', secretKey: '<SECRET_KEY>'))
 ```
 
 Replace <SECRET_KEY> and <BUSINESS_ID> with your actual secret key and business ID.
