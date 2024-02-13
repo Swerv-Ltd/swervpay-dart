@@ -13,9 +13,7 @@ class OtherResources {
   final SwervpayClient _client;
 
   /// Get banks
-  Future<List<BankModel>> banks({
-    required String id,
-  }) async {
+  Future<List<BankModel>> banks() async {
     final response = await _client.get('/banks');
 
     final rawBanks = jsonDecode(response.body) as List<Map<String, dynamic>>;

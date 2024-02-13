@@ -43,7 +43,20 @@ Create a new instance of Swervpay with your secret_key and business_id:
 ```dart
 import "package:swervpay_dart/swervpay_dart.dart";
 
-final SwervpayClient swerpvay = SwervpayClient(config: SwervpayClientConfig(businessId: '<BUSINESS_ID>', secretKey: '<SECRET_KEY>'))
+final swervpayClient = SwervpayClient(
+  config: SwervpayClientConfig(
+    businessId: '<BUSINESS_ID>',
+    secretKey: '<SECRET_KEY>',
+  ),
+);
+
+// Fetch all banks
+final banks = await swervpayClient.other.banks();
+
+// Print the banks
+for (final bank in banks) {
+  print(bank.bankName);
+}
 ```
 
 Replace <SECRET_KEY> and <BUSINESS_ID> with your actual secret key and business ID.
