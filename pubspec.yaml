@@ -1,6 +1,6 @@
 name: swervpay_dart
 description: Dart Client for Swervpay. API Wrapper for everything that Swervpay offer for Flutter/Dart Developer.
-version: 0.0.1
+version: 0.0.2
 homepage: https://docs.swervpay.co/sdks/dart
 repository: https://github.com/swerv-ltd/swervpay-dart
 issue_tracker: https://github.com/swerv-ltd/swervpay-dart/issues

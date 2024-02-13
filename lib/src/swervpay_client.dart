@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -55,29 +56,23 @@ class SwervpayClient {
   /// {@macro swervpay_client}
   SwervpayClient({
     required SwervpayClientConfig config,
-    Stream<String?>? accessTokenSubscription,
-    Future<String?> Function()? refreshIdToken,
     PostCall postCall = http.post,
     PutCall putCall = http.put,
     PatchCall patchCall = http.patch,
     GetCall getCall = http.get,
   })  : _base = Uri.parse(config.baseUrl),
+        _config = config,
         _post = postCall,
         _put = putCall,
         _patch = patchCall,
-        _get = getCall,
-        _refreshIdToken = refreshIdToken {
-    _accessTokenSubscription = accessTokenSubscription?.listen((token) {
-      _accessToken = token;
-    });
-  }
+        _get = getCall;
 
   final Uri _base;
   final PostCall _post;
   final PostCall _put;
   final PatchCall _patch;
   final GetCall _get;
-  final Future<String?> Function()? _refreshIdToken;
+  final SwervpayClientConfig _config;
 
   late final StreamSubscription<String?>? _accessTokenSubscription;
   String? _accessToken;
@@ -121,18 +116,40 @@ class SwervpayClient {
     final response = await sendRequest();
 
     if (response.statusCode == HttpStatus.unauthorized) {
-      if (_refreshIdToken != null) {
-        _accessToken = await _refreshIdToken();
-      } else {
-        throw SwervpayClientError(
-          response.body,
-          StackTrace.current,
-        );
-      }
+      _accessToken = await _refreshAccessToken();
 
       return sendRequest();
     }
     return response;
+  }
+
+  Future<String> _refreshAccessToken() async {
+    final response = await _post(
+      _base.replace(
+        path: '/auth',
+      ),
+      body: jsonEncode({}),
+      headers: _headers
+        ..addContentTypeJson()
+        ..addAll({
+          'Authorization': 'Basic ${base64Encode(
+            utf8.encode(
+              '${_config.businessId}:${_config.secretKey}',
+            ),
+          )}',
+        }),
+    );
+
+    if (response.statusCode != HttpStatus.ok) {
+      throw SwervpayClientError(
+        'Failed to refresh access token',
+        StackTrace.current,
+      );
+    }
+
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+
+    return data['access_token'] as String;
   }
 
   /// Dispose of resources used by this client.
