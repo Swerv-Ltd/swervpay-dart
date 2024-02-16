@@ -102,7 +102,7 @@ class CardResources {
   }
 
   /// Create card
-  Future<SuccessModel> create({
+  Future<CreateCardResponse> create({
     required String? customerId,
     required Currency currency,
     required CardType type,
@@ -122,7 +122,7 @@ class CardResources {
         'amount': amount,
       }),
     );
-    return SuccessModel.fromJson(
+    return CreateCardResponse.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
   }

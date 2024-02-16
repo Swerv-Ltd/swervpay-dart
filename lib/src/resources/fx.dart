@@ -13,7 +13,7 @@ class FxResources {
   final SwervpayClient _client;
 
   /// Rate
-  Future<SuccessModel> rate({
+  Future<ExchangeRateResponse> rate({
     required String from,
     required String to,
     required double amount,
@@ -26,7 +26,7 @@ class FxResources {
         'amount': amount,
       }),
     );
-    return SuccessModel.fromJson(
+    return ExchangeRateResponse.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
   }

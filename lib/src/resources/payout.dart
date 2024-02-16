@@ -23,7 +23,7 @@ class PayoutResources {
   }
 
   /// Create a payout
-  Future<SuccessModel> create({
+  Future<CreatePayoutResponse> create({
     required String bankCode,
     required String accountNumber,
     required double amount,
@@ -42,7 +42,7 @@ class PayoutResources {
         'narration': narration,
       }),
     );
-    return SuccessModel.fromJson(
+    return CreatePayoutResponse.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
   }
