@@ -4,7 +4,7 @@ class SwervpayClientConfig {
   SwervpayClientConfig({
     required this.secretKey,
     required this.businessId,
-    this.baseUrl = 'https://api.swervpay.co/v1',
+    this.baseUrl = 'https://api.swervpay.co/api/v1',
   });
 
   /// Secret key for the Swervpay client

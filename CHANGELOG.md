@@ -14,3 +14,11 @@
 # 0.0.4
 
 - Provide example and fixed other issue
+
+# 0.0.5
+
+- Bump version and fixed issue with response type
+
+# 0.0.6
+
+- Fixed base url and some response type

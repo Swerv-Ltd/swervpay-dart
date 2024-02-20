@@ -14,14 +14,11 @@ class TransactionModel with _$TransactionModel {
     @JsonKey(name: 'account_name') required String accountName,
     @JsonKey(name: 'account_number') required String accountNumber,
     @JsonKey(name: 'amount') required String amount,
-    @JsonKey(name: 'asset_id') required String assetId,
     @JsonKey(name: 'bank_code') required String bankCode,
     @JsonKey(name: 'bank_name') required String bankName,
-    @JsonKey(name: 'business_id') required String businessId,
     @JsonKey(name: 'category') required String category,
     @JsonKey(name: 'charges') required String charges,
     @JsonKey(name: 'created_at') required String createdAt,
-    @JsonKey(name: 'customer_id') required String customerId,
     @JsonKey(name: 'detail') required String detail,
     @JsonKey(name: 'fiat_rate') required String fiatRate,
     @JsonKey(name: 'id') required String id,
@@ -30,10 +27,8 @@ class TransactionModel with _$TransactionModel {
     @JsonKey(name: 'report_message') required String reportMessage,
     @JsonKey(name: 'session_id') required String sessionId,
     @JsonKey(name: 'status') required String status,
-    @JsonKey(name: 'sub_wallet_id') required String subWalletId,
     @JsonKey(name: 'type') required String type,
     @JsonKey(name: 'updated_at') required String updatedAt,
-    @JsonKey(name: 'wallet_id') required String walletId,
   }) = _TransactionModel;
 
   /// Deserialize json to TransactionModel

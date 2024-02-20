@@ -11,7 +11,6 @@ part 'customer.g.dart';
 class CustomerModel with _$CustomerModel {
   /// Customer model constructor
   const factory CustomerModel({
-    @JsonKey(name: 'business_id') required String businessId,
     @JsonKey(name: 'country') required String country,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'email') required String email,
