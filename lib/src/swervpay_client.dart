@@ -110,6 +110,9 @@ class SwervpayClient {
   /// The webhook resources.
   late final WebhookResources webhook = WebhookResources(client: this);
 
+  /// The collection resources.
+  late final CollectionResources collection = CollectionResources(client: this);
+
   Future<http.Response> _handleUnauthorized(
     Future<http.Response> Function() sendRequest,
   ) async {

@@ -12,8 +12,6 @@ class CardResources {
   /// Swervpay client
   final SwervpayClient _client;
 
-  /// Create a card
-
   /// Retrieve a card
   Future<CardModel> get({
     required String id,
@@ -41,6 +39,38 @@ class CardResources {
         jsonDecode(response.body) as List<Map<String, dynamic>>;
 
     return rawCustomers.map(CardModel.fromJson).toList();
+  }
+
+  /// Retrieve a card transaction
+  Future<CardTransactionModel> transaction({
+    required String id,
+    required String transactionId,
+  }) async {
+    final response =
+        await _client.get('/cards/$id/transactions/$transactionId');
+    return CardTransactionModel.fromJson(
+      jsonDecode(response.body) as Map<String, dynamic>,
+    );
+  }
+
+  /// Get all card transactions
+  Future<List<CardTransactionModel>> transactions({
+    required String id,
+    required int limit,
+    required int page,
+  }) async {
+    final response = await _client.get(
+      '/cards/$id/transactions',
+      queryParameters: {
+        'limit': limit.toString(),
+        'page': page.toString(),
+      },
+    );
+
+    final rawCustomers =
+        jsonDecode(response.body) as List<Map<String, dynamic>>;
+
+    return rawCustomers.map(CardTransactionModel.fromJson).toList();
   }
 
   /// Fund card

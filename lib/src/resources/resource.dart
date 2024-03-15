@@ -1,5 +1,6 @@
 export 'business.dart';
 export 'card.dart';
+export 'collection.dart';
 export 'customer.dart';
 export 'fx.dart';
 export 'other.dart';

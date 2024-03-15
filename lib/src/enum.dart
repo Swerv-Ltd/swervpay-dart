@@ -28,3 +28,13 @@ enum Currency {
   /// NGN
   ngn,
 }
+
+/// Collection Type
+enum CollectionType {
+  /// one time
+  // ignore: constant_identifier_names
+  one_time,
+
+  /// Default
+  defaultType,
+}

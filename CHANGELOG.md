@@ -22,3 +22,7 @@
 # 0.0.6
 
 - Fixed base url and some response type
+
+# 0.0.7
+
+- Added collection endpoint

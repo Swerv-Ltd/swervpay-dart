@@ -1,6 +1,8 @@
 export 'bank.dart';
 export 'business.dart';
 export 'card.dart';
+export 'card_transaction.dart';
+export 'collection_history.dart';
 export 'config.dart';
 export 'create_card.dart';
 export 'create_payout.dart';
