@@ -60,7 +60,9 @@ class SwervpayClient {
     PutCall putCall = http.put,
     PatchCall patchCall = http.patch,
     GetCall getCall = http.get,
-  })  : _base = Uri.parse(config.baseUrl),
+  })  : _base = Uri.parse(
+          config.isSandbox ? config.sandboxBaseUrl : config.baseUrl,
+        ),
         _config = config,
         _post = postCall,
         _put = putCall,

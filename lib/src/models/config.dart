@@ -5,6 +5,8 @@ class SwervpayClientConfig {
     required this.secretKey,
     required this.businessId,
     this.baseUrl = 'https://api.swervpay.co/api/v1',
+    this.sandboxBaseUrl = 'https://sandbox.swervpay.co/api/v1',
+    this.isSandbox = false,
   });
 
   /// Secret key for the Swervpay client
@@ -15,4 +17,10 @@ class SwervpayClientConfig {
 
   /// Base URL for the Swervpay client
   final String baseUrl;
+
+  /// Sandbox Base URL for the Swervpay client
+  final String sandboxBaseUrl;
+
+  /// Is sandbox
+  final bool isSandbox;
 }
